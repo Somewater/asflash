@@ -1,0 +1,7 @@
+<div class="well">
+    <%=
+        section = @section
+        section = @portfolio.section if @portfolio
+        section ||= Section.main
+        render_main_menu_recursively(Section.main, section).html_safe %>
+</div>

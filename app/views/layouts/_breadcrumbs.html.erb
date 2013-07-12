@@ -1,0 +1,22 @@
+<% 
+    @current_section = nil
+    @disable_last_section = true
+    if @section
+        @current_section = @section
+    elsif @portfolio
+        @current_section = @portfolio.section
+        @disable_last_section = false
+    end
+%>
+<ul class="breadcrumb">
+    <% each_with_borders(@current_section.chain(true)) do |section, index, last| %>
+        <% if last && @disable_last_section %>
+            <li class="active"><%= section.pretty_name %></li>
+        <% else %>
+            <li><a href="<%=  section_path(section) %>"><%= section.pretty_name %></a> <span class="divider">/</span></li>
+        <% end %> 
+    <% end %>
+    <% if @portfolio %>
+        <li class="active"><%= @portfolio.title %></li>
+    <% end %>
+</ul>

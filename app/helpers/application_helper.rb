@@ -38,4 +38,36 @@ module ApplicationHelper
     end
     result
   end
+  
+  def render_main_menu_recursively(section, active, active_chain = nil)
+    active_chain = active.chain(true) unless active_chain
+    result = nil
+    
+    if(section.main?)
+      result = ''
+    else
+      result = "<li#{ (active_chain.include?(section) ? ' class="active"' : '') 
+                                          }><a href=\"#{ section_path(section) }\">#{ section.pretty_name }</a></li>"
+    end
+    
+    if(active_chain.include?(section) && section.children.length > 0)
+      result << '<ul class="nav nav-list">'
+      section.children.each{|s|
+        result << render_main_menu_recursively(s, active, active_chain)
+      }
+      result << '</ul>'
+    end
+    result
+  end
+
+  def paginate_collection(collection, current, page_half_quantity, &block)
+    length = collection.length
+    index = collection.index(current)
+    start_index = [index - page_half_quantity, 0].max
+    end_index = [index + page_half_quantity, length].min
+    each_with_borders(collection[start_index...end_index]) do |item, idx, last|
+      item_index = start_index + idx
+      block.call(item, item_index, idx == 0 && item_index > 0, last && item_index < length - 1)
+    end
+  end
 end

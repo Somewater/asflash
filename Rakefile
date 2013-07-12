@@ -18,3 +18,8 @@ task :search => :environment do
   ActsAsFerret.rebuild_index(SearchController::INDEX_NAME)
   puts "Completed in #{(Time.new - t)}"
 end
+
+desc "Create main section"
+task :create_main_section => :environment do
+  Section.create({:name => Section::MAIN_NAME})
+end

@@ -1,4 +1,4 @@
-ru:
+﻿ru:
   search:
     button: Поиск
     site_search: "Поиск по сайту:"
@@ -24,6 +24,7 @@ ru:
     root_section_has_parent: Главный раздел сайта не должен иметь родительский раздел
     section_has_not_parent: В разделе должен быть задан родительский раздел
     section_parent_infinity_loop: "Циклические связи между разделами: %{message}"
+    undefined_portfolio_type: Неизвестный тип портфолио %{type}
   admin:
     actions:
       stat_panel:

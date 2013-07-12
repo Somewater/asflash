@@ -1,1 +1,24 @@
-<p><%= @section.title %></p>
+<% if @section.children.size > 0 %>
+    <ul class="nav nav-tabs nav-stacked">
+        <% @section.children.each do |section| %>
+            <li><a href="<%= section_path(section) %>"><%= section.pretty_name %></a></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<% if @section.portfolio.size > 0 %>
+    <div class="row-fluid">
+        <% @section.portfolio.in_groups_of(4, false) do |portfolio_row| %>
+            <ul class="thumbnails">
+                <% portfolio_row.each do |portfolio| %>
+                    <li class="span3">
+                        <a href="<%= portfolio_path(portfolio) %>" class="thumbnail">
+                            <p style="text-align: center; width: 100%"><%= portfolio.title %></p>
+                            <img src="<%= portfolio.preview_url %>">
+                        </a>
+                    </li>
+                <% end %>
+            </ul>
+        <% end %>
+    </div>
+<% end %>

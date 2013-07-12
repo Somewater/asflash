@@ -7,6 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<header>
+    <% if @section || @portfolio %>
+        <%= render :partial => 'layouts/breadcrumbs' %>
+    <% end %>
+</header>
+
 <div class="container">
     <% unless notice.blank? %>
         <div class="alert alert-success">
@@ -23,8 +30,20 @@
     <% end %>
 
     <div id="page" class="row">
-         <%= yield %>
+        <div class="span2">
+            <%= render :partial => 'layouts/main_menu' %>
+        </div>       
+        <div class="span10">
+            <%= yield %>
+        </div>
     </div>
 </div>
+
+<footer>
+    <div class="modal-footer">
+        
+    </div>
+</footer>
+
 </body>
 </html>

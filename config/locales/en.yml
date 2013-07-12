@@ -24,6 +24,7 @@ en:
     root_section_has_parent: The main section of the site should not have Parent
     section_has_not_parent: Section should have Parent
     section_parent_infinity_loop: "Cyclic connection between sections: %{message}"
+    undefined_portfolio_type: Undefined portfolio type %{type}
   admin:
     actions:
       stat_panel:
