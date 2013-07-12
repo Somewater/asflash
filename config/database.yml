@@ -2,25 +2,25 @@ development:
   adapter: postgresql
   encoding: utf8
   reconnect: true
-  database: Tabularasa
+  database: asflash
   pool: 5
-  username: user
-  password: hello
+  username: adelaida
+  password: Jgus83igy
 
 test:
   adapter: postgresql
   encoding: utf8
   reconnect: true
-  database: Tabularasa_test
+  database: asflash_test
   pool: 5
-  username: user
-  password: hello
+  username: adelaida
+  password: Jgus83igy
 
 production:
   adapter: postgresql
   encoding: utf8
   reconnect: true
-  database: Tabularasa
+  database: asflash
   pool: 5
-  username: user
-  password: hello
+  username: adelaida
+  password: Jgus83igy

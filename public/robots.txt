@@ -1,4 +1,4 @@
 User-Agent: *
 Disallow: /search/
 Disallow: /admin/
-Sitemap: http://Tabularasa/sitemap.xml
+Sitemap: http://asflash.ru/sitemap.xml
