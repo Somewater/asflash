@@ -1,0 +1,1 @@
+{"response":{"uid":"40521534","info":{"rating":"0","last_buy":"1297081353","vip":"1","coupons_buy":"2","vigoda":"7800.00","spent_money":"2700.00","quests_complete":"5"}}}
