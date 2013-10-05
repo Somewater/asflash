@@ -1,14 +1,14 @@
 class SectionsController < ApplicationController
-  
+
+  PORTFOLIO_PER_PAGE = 10
+
   def index
-    @section = Section.main
-    @page_number = 0
-    render_section()
+    redirect_to section_path(Section.find_by_name(Section::PORTFOLIO_NAME))
   end
   
   def show
     @section = (params[:id] || params[:section_id] ? Section.find_by_name(params[:id] || params[:section_id]) : nil)
-    @page_number = [(params[:page] || '1').to_i, 1].max - 1
+    @page_number = [(params[:page] || '0').to_i, 0].max
     if @section && @section.main?
       redirect_to root_path
     else

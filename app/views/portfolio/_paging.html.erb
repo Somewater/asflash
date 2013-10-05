@@ -1,0 +1,11 @@
+<% if @portfolio.section.portfolio.size > 1 %>
+    <div class="pagination pagination-centered">
+        <ul>
+            <% @portfolio.section.portfolio.each_with_index do |portfolio, index| %>
+                <li<%= portfolio.id == @portfolio.id ? ' class="active"'.html_safe : '' %>>
+                    <a href="<%= portfolio_path(portfolio) %>"><%= (index + 1) %></a>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>

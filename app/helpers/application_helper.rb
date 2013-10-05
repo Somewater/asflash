@@ -8,11 +8,12 @@ module ApplicationHelper
     end
   end
 
-  def section_path(id)
-    if(id.to_s == Section::MAIN_NAME || (id.is_a?(Section) && id.main?))
+  def section_path(id, params = nil)
+    if(id.to_s == Section::MAIN_NAME || (id.is_a?(Section) && id.main?)) && false
       '/'
     else
-      super
+      params.delete :page if params && params[:page].to_i == 0
+      super(id, params)
     end
   end
 

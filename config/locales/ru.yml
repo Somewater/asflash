@@ -33,3 +33,5 @@
         breadcrumb: Сохранить БД
         database_dump: Загрузить копию базы данных
   sitemap: Карта сайта
+  sections:
+    details: Подробнее...

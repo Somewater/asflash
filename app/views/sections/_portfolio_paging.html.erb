@@ -1,0 +1,19 @@
+<% if @section.portfolio.size > SectionsController::PORTFOLIO_PER_PAGE %>
+    <div class="pagination pagination-centered">
+        <ul>
+            <% paginate_collection((@section.portfolio.size.to_f / SectionsController::PORTFOLIO_PER_PAGE).ceil.times.to_a, @page_number, 5) do |page_num, index, left_arrow, right_arrow| %>
+                <li<%= @page_number == page_num ? ' class="active"'.html_safe : '' %>>
+                    <a href="<%= section_path(@section, :page => page_num) %>"><%=
+                        (if left_arrow
+                           '&laquo;'
+                         elsif right_arrow
+                           '&raquo;'
+                         else
+                           (index + 1).to_s
+                         end).to_s.html_safe
+                    %></a>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>

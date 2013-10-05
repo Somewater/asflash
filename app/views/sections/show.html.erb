@@ -6,19 +6,19 @@
     </ul>
 <% end %>
 
-<% if @section.portfolio.size > 0 %>
-    <div class="row-fluid">
-        <% @section.portfolio.in_groups_of(4, false) do |portfolio_row| %>
-            <ul class="thumbnails">
-                <% portfolio_row.each do |portfolio| %>
-                    <li class="span3">
-                        <a href="<%= portfolio_path(portfolio) %>" class="thumbnail">
-                            <p style="text-align: center; width: 100%"><%= portfolio.title %></p>
-                            <img src="<%= portfolio.preview_url %>">
-                        </a>
-                    </li>
-                <% end %>
-            </ul>
+<% if @page %>
+    <h3><%= @page.title %></h3>
+    <%= @page.body.to_s.html_safe  %>
+<% elsif @section.portfolio.size > 0 %>
+    <%= render :partial => 'sections/portfolio_paging' %>
+    <div>
+        <% each_with_borders(@section.portfolio.all(:limit => SectionsController::PORTFOLIO_PER_PAGE, :offset => @page_number * SectionsController::PORTFOLIO_PER_PAGE)) do |portfolio, index, last| %>
+            <div>
+                <a href="<%= portfolio_path(portfolio) %>"><h3><%= portfolio.title %></h3></a>
+                <%= portfolio.preview.to_s.html_safe  %>
+            </div>
+            <div class="well well-small" style="margin-bottom: 50px;"><a href="<%= portfolio_path(portfolio) %>"><%= t('sections.details') %></a></div>
         <% end %>
     </div>
+    <%= render :partial => 'sections/portfolio_paging' %>
 <% end %>

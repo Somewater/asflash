@@ -1,6 +1,6 @@
 class PortfolioController < ApplicationController
   
   def show
-    @portfolio = Portfolio.find(params[:id])
+    @portfolio = Portfolio.where(['name = ?', params[:id]]).first
   end
 end

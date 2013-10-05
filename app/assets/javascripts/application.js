@@ -12,3 +12,9 @@
 //
 //= require ./jquery
 //= require ./bootstrap/bootstrap
+$(document).ready(function() {
+    $(".fancybox").fancybox({
+        openEffect	: 'elastic',
+        closeEffect	: 'elastic'
+    });
+});

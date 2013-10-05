@@ -1,6 +1,7 @@
 class Section < ActiveRecord::Base
 
   MAIN_NAME = 'main'
+  PORTFOLIO_NAME = 'portfolio'
   ORDER = "weight ASC"
   CONDITIONS = 'visible = TRUE'
 
