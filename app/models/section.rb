@@ -11,8 +11,8 @@ class Section < ActiveRecord::Base
   attr_accessible :name, :weight, :visible, :parent_id
   belongs_to :parent, :class_name => 'Section'
   has_many :children, :class_name => 'Section', :foreign_key => 'parent_id', :order => Section::ORDER, :conditions => CONDITIONS
-  has_many :text_pages
-  has_many :portfolio, :class_name => 'Portfolio'
+  has_many :text_pages, :order => Section::ORDER
+  has_many :portfolio, :class_name => 'Portfolio', :order => Section::ORDER
 
   #validates :parent, :presence =>  { :unless => :main? }, :if => :not_infinity_loop?
   class SectinsValidator < ActiveModel::Validator

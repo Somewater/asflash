@@ -3,7 +3,7 @@ class TextPage < ActiveRecord::Base
   extend ::I18nColumns::Model
   i18n_columns :title, :body, :ferret => true
 
-  attr_accessible :name, :section_id
+  attr_accessible :name, :section_id, :weight
   belongs_to :section
 
   validates :section, :presence => true
