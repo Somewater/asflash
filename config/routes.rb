@@ -4,6 +4,7 @@ Asflash::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   scope "(:locale)", :locale => /ru|en/ do
+    match 'portfolio', :to => 'section#portfolio'
     match 'section/(:id/(:page))', :to => 'sections#show', :as => 'section'
     match 'portfolio/(:id)', :to => 'portfolio#show', :as => 'portfolio'
     

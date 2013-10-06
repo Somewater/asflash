@@ -5,6 +5,12 @@ class SectionsController < ApplicationController
   def index
     redirect_to section_path(Section.find_by_name(Section::PORTFOLIO_NAME))
   end
+
+  def portfolio
+    @section = Section.find_by_name(Section::PORTFOLIO_NAME)
+    @page_number = 0
+    render_section
+  end
   
   def show
     @section = (params[:id] || params[:section_id] ? Section.find_by_name(params[:id] || params[:section_id]) : nil)
