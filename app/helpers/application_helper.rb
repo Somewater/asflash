@@ -9,8 +9,15 @@ module ApplicationHelper
   end
 
   def section_path(id, params = nil)
-    if(id.to_s == Section::MAIN_NAME || (id.is_a?(Section) && id.main?)) && false
+    id = id.name if id.is_a?(Section)
+    if id.to_s == Section::MAIN_NAME
       '/'
+    elsif id.to_s == Section::PORTFOLIO_NAME
+      portfolio_legacy_path
+    elsif id.to_s == Section::CONTACTS_NAME
+      contacts_legacy_path
+    elsif id.to_s == Section::RESUME_NAME
+      resume_legacy_path
     else
       params.delete :page if params && params[:page].to_i == 0
       super(id, params)

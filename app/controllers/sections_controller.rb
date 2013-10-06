@@ -6,10 +6,12 @@ class SectionsController < ApplicationController
     redirect_to section_path(Section.find_by_name(Section::PORTFOLIO_NAME))
   end
 
-  def portfolio
-    @section = Section.find_by_name(Section::PORTFOLIO_NAME)
-    @page_number = 0
-    render_section
+  [:portfolio, :resume, :contacts].each do |method|
+    define_method method.to_s + '_legacy' do
+      @section = Section.find_by_name(Section.const_get(method.to_s.upcase << '_NAME'))
+      @page_number = 0
+      render_section
+    end
   end
   
   def show

@@ -2,6 +2,9 @@ class Section < ActiveRecord::Base
 
   MAIN_NAME = 'main'
   PORTFOLIO_NAME = 'portfolio'
+  RESUME_NAME = 'resume'
+  CONTACTS_NAME = 'contacts'
+
   ORDER = "weight ASC"
   CONDITIONS = 'visible = TRUE'
 
