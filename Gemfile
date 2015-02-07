@@ -4,7 +4,7 @@ gem 'rack', '~> 1.4.5'
 gem 'rails', '3.2.13'
 
 gem 'pg'
-gem 'thin'
+gem 'unicorn'
 
 
 # Gems used only for assets and not required
